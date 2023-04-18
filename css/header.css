@@ -1,0 +1,127 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container{
+    max-width: 1000px;
+    margin: auto;
+}
+
+.header-top{
+    margin-top: 23px;
+    display: flex;
+    gap: 52px;
+}
+
+.logo{
+    max-width: 50px;
+    max-height: 40px;
+    margin-top: 1px;
+}
+
+.header-top-navigation{
+    display: flex;
+    gap: 52px;
+}
+
+.search{
+    border: none;
+    height: 100%;
+    width: 90%;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.165em;
+    color: #626262;
+}
+
+.input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.search:focus{
+    outline: none;
+    background: none;
+}
+
+.search-header{
+    overflow: hidden;
+    align-items: center;
+    height: 42px;
+    width: 580px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 90px;
+}
+
+.button-search{
+    border: none;
+    background: none;
+}
+
+.magnifier{
+    position: relative;
+    top: 3px;
+    right: -15px;
+    width: 16px;
+    height: 16px;
+}
+
+.cart-navigation{
+    height: 42px;
+    width: 60px;
+}
+
+.img-cart{
+    max-height: 30px;
+    max-width: 30px;
+    margin-left: 15px;
+    margin-bottom: -8px;
+}
+
+.text-navigation{
+    height: 12px;
+    width: 60px;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.165em;
+    color: #000000;
+    text-decoration: none;
+}
+
+.text-navigation:hover{
+    filter: invert(29%) sepia(25%) saturate(4599%) hue-rotate(266deg) brightness(94%) contrast(90%);
+}
+
+.last{
+    padding-left: 7px;
+    margin-left: -15px;
+}
+
+.navigation-links{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+    padding: 0 26px 0 26px;
+}
+
+.navigation-link{
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.navigation-link:hover{
+    color: #9E3BB7;
+}
+
+.line{
+    border: 1px solid #E9E9E9;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

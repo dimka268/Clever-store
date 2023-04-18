@@ -1,0 +1,14 @@
+.container-main{
+    width: 950px;
+    margin: auto;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+a{
+    text-decoration: none;
+}
