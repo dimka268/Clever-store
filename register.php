@@ -9,7 +9,7 @@
             <h3 class="title-modal">Регистрация</h3>
             <div class="inputs-form">
                 <input type="text" maxlength="50" id="name" name="name" class="form-modal" placeholder="Введите свое имя" autocomplete="off">
-                <input type="email" maxlength="320" id="login" name="login" class="form-modal" placeholder="Введите свою почту (логин)" autocomplete="off">
+                <input type="email" maxlength="320" id="email" name="email" class="form-modal" placeholder="Введите свою почту (логин)" autocomplete="off">
                 <input type="password" minlength="4" id="password1" name="password1" maxlength="16" class="form-modal" placeholder="Придумайте пароль (от 4 до 16 символов)" autocomplete="off">
                 <input type="password" minlength="4" id="password2" name="password2" maxlength="16" class="form-modal" placeholder="Повторите пароль" autocomplete="off">
             </div>
