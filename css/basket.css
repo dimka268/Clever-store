@@ -1,0 +1,250 @@
+.basket{
+    display: flex;
+}
+
+.cards-basket{
+    margin-top: 25px;
+}
+
+.container-basket{
+    display: flex;
+    width: 1000px;
+    margin: auto;
+}
+
+.card-basket{
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    width: 760px;
+    height: 200px;
+}
+
+.card-basket:hover{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.cart-container{
+    margin-top: 25px;
+    display: flex;
+}
+
+.text-greeting{
+    margin-left: 240px;
+    margin-bottom: 0;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.basket-img{
+    margin-left: 40px;
+}
+
+.basket-category{
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 0px;
+}
+
+.main_text_basket{
+    margin-left: 50px;
+}
+
+.title-cart-basket{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    width: 300px;
+    height: 60px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.title-cart-basket:hover{
+    color: rgba(158, 59, 183, 0.8);
+}
+
+.amount-cart{
+    margin-top: 30px;
+}
+
+.left-card-basket{
+    margin-top: 35px;
+    height: 80px;
+    width: 150px;
+    margin-left: 30px;
+    margin-right: 40px;
+}
+
+.cart-price-basket{
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.buy-basket{
+    background: #9E3BB7;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+    margin-top: 30px;
+}
+
+.buy-basket:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.js-number::-webkit-outer-spin-button,
+.js-number::-webkit-inner-spin-button {
+    display: none;
+    margin: 0;
+}
+
+.amount-cart{
+    display: flex;
+}
+
+.button-amount{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-left: 40px;
+}
+
+.js-number{
+    height: 20px;
+    width: 40px;
+    text-align: center;
+    appearance: textfield;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    border: none;
+    background: #FFFFFF;
+
+}
+
+.js-plus-btn{
+    width: 25px;
+    border-left: 1px solid #D4D4D4;
+}
+
+.js-minus-btn{
+    width: 25px;
+    border-right: 1px solid #D4D4D4;
+}
+
+.form-check-input:checked {
+    background-color: #9E3BB7;
+    border-color: #9E3BB7;
+}
+
+.slider-basket{
+    margin-top: 35px;
+    margin-left: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.container-slider{
+    width: 230px;
+    height: 285px;
+}
+
+.goods-warehouse{
+    padding-top: 25px;
+}
+
+.title-slider{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.radio-slider{
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+    width: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.form-check-label{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    margin-left: 50px;
+    vertical-align: center;
+    height: 14px;
+    width: 150px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+}
+
+.div-block-info{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+}
+
+.amount-slider{
+    display: flex;
+    justify-content: space-between;
+}
+
+.varchar-slider{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.total-price{
+    margin-left: 15px;
+    margin-top: 25px;
+    display: flex;
+}
+
+.total-text{
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+}
+
+.price-total{
+    padding-left: 15px;
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+}
+
+.slider-button{
+    margin-top: 25px;
+    margin-left: 40px;
+}

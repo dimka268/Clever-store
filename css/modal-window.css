@@ -76,12 +76,13 @@
 }
 
 .buttons-form{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .button-modal{
     width: 250px;
     height: 38px;
+    margin-top: 10px;
     font-size: 12px;
     line-height: 14px;
     color: #FFFFFF;
@@ -98,6 +99,8 @@
 }
 
 .text-between-button{
+    margin-bottom: 0;
+    margin-top: 10px;
     text-align: center;
     font-weight: 400;
     font-size: 12px;

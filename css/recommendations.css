@@ -4,7 +4,7 @@
 
 .carts-product-recommendations{
     display: flex;
-    gap: 10px;
+    gap: 4px;
 }
 
 .cart-product-rec{
@@ -22,7 +22,12 @@
     margin: auto;
 }
 
-.img-cart-rec{
+.img-cart-product{
+    width: 150px;
+    height: 150px;
+}
+
+.rec{
     margin-top: 20px;
 }
 

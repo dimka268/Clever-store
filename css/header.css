@@ -109,6 +109,11 @@ input[type="search"]::-webkit-search-results-decoration {
     padding: 0 26px 0 26px;
 }
 
+.basket-links{
+    gap: 50px !important;
+    justify-content: center !important;
+}
+
 .navigation-link{
     text-decoration: none;
     font-size: 16px;
@@ -117,11 +122,15 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .navigation-link:hover{
-    color: #9E3BB7;
+    filter: invert(29%) sepia(25%) saturate(4599%) hue-rotate(266deg) brightness(94%) contrast(90%);
 }
 
 .line{
     border: 1px solid #E9E9E9;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.active{
+    filter: invert(29%) sepia(25%) saturate(4599%) hue-rotate(266deg) brightness(94%) contrast(90%);
 }
