@@ -1,7 +1,6 @@
 var plus = document.getElementsByClassName('js-plus-btn')[0];
 var minus = document.getElementsByClassName('js-minus-btn')[0];
 var field = document.getElementById('number-diet');
-// TODO: Переписать выделение ссылок
 var links = document.getElementsByClassName('js-class');
 
 for (let link of links){

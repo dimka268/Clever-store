@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="css/brands.css">
     <link rel="stylesheet" href="css/modal-window.css">
     <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/cards-category.css">
+    <link rel="stylesheet" href="css/order-history.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Clever store</title>
 </head>
@@ -43,7 +46,7 @@
 
                 <div class="header-top-navigation">
                     <div class="cart-navigation">
-                        <a href="#" class="text-navigation js-class">
+                        <a href="catalog.php" class="text-navigation js-class">
                             <img src="img/catalog.svg" alt="" class="img-cart">
                         Каталог</a>
                     </div>

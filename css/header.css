@@ -65,7 +65,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .magnifier{
     position: relative;
-    top: 3px;
+    top: 0px;
     right: -15px;
     width: 16px;
     height: 16px;
