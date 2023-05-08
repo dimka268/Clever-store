@@ -26,14 +26,17 @@
                 <? $count = 1;
                 foreach ($rezult as $cart):
                     if ($count > 4) break ?>
-                        <a href="#" class="cart-links-rec">
+                        <!-- TODO:-->
+                        <a href="product-page.php" class="cart-links-rec">
                             <div class="cart-product-rec">
                                 <div class="container-cart">
                                     <img src="<? echo $cart['product_img']; ?>" alt="Фото компьютера" class="img-cart-product rec">
                                     <div class="cart-caregory">
-                                        <a href="#" class="category"><? echo $cart['category_title']; ?></a>
+                                        <!-- TODO:-->
+                                        <a href="cards-category.php" class="category"><? echo $cart['category_title']; ?></a>
                                     </div>
-                                    <a href="#" class="link-cart-product">
+                                    <!-- TODO:-->
+                                    <a href="product-page.php?" class="link-cart-product">
                                         <p class="cart-title-rec"><? echo $cart['title']; ?></p>
                                     </a>
                                     <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>
@@ -61,21 +64,24 @@
             </div>
         </div>
 
-        <? if(!array_key_exists('user_id', $_SESSION)):?>
+        <? if(array_key_exists('user_id', $_SESSION)):?>
             <div class="recommendations">
                 <h3 class="title-main">Вы недавно смотрели</h3>
                 <div class="carts-product-recommendations">
                     <? $count = 1;
                     foreach ($rezult as $cart):
                         if ($count > 4) break ?>
-                        <a href="#" class="cart-links-rec">
+                        <!-- TODO:-->
+                        <a href="product-page.php" class="cart-links-rec">
                             <div class="cart-product-rec">
                                 <div class="container-cart">
                                     <img src="<? echo $cart['product_img']; ?>" alt="Фото компьютера" class="img-cart-product rec">
                                     <div class="cart-caregory">
-                                        <a href="#" class="category"><? echo $cart['category_title']; ?></a>
+                                        <!-- TODO:-->
+                                        <a href="cards-category.php" class="category"><? echo $cart['category_title']; ?></a>
                                     </div>
-                                    <a href="#" class="link-cart-product">
+                                    <!-- TODO:-->
+                                    <a href="product-page.php" class="link-cart-product">
                                         <p class="cart-title-rec"><? echo $cart['title']; ?></p>
                                     </a>
                                     <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>

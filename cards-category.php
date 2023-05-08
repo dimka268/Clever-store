@@ -1,11 +1,35 @@
 <?php
 $category_id = $_GET["category"];
+$page = $_GET["page"]?:1;
+$offset = $page * 5 - 5;
+
+$connect = new mysqli('localhost', 'root', '', 'clever_store');
+
+$card_output2 = "SELECT * FROM `categories` WHERE category_id = $category_id";
+
+$card_output3 = "SELECT `product_id`, categories.category_title AS categories_category_title,  brands.`title` AS brand_title, products.`title` AS product_title, `operating_system`,`maximum_refresh_rate`,`processor_manufacturer`,`processor_model`,`weight`,`price`,`description`, products.`img` AS product_img
+FROM `products` 
+INNER JOIN brands ON brands.brand_id = products.brand_id
+INNER JOIN categories ON categories.category_id = products.category_id
+WHERE products.category_id = $category_id LIMIT $offset, 5;";
+
+$card_count1 = "SELECT COUNT(*) AS count
+FROM `products` 
+WHERE products.category_id = $category_id;";
+
+$rezult7 = $connect->query($card_count1)->fetch_assoc()['count'];
+
+$rezult5 = $connect->query($card_output2)->fetch_all(MYSQLI_ASSOC);
+
+$rezult6 = $connect->query($card_output3)->fetch_all(MYSQLI_ASSOC);
 ?>
 <? require_once "header.php"; ?>
 <? require_once "header-bottom.php"; ?>
 
 <div class="container-catalog">
-    <h3 class="title-main">Компьютеры</h3>
+    <? foreach ($rezult5 as $category):?>
+    <h3 class="title-main"><? echo $category['category_title']; ?></h3>
+    <? endforeach; ?>
     <div class="container-category">
         <div class="sidebar-cart-category">
             <div class="container-sidebar-cards">
@@ -69,238 +93,65 @@ $category_id = $_GET["category"];
         </div>
 
         <div class="cards-category">
-
+        <? foreach ($rezult6 as $cart_category):?>
             <div class="card-basket card-category">
 
                 <div class="cart-container">
-                    <img src="img/asus.png" alt="Фото товара" class="img-cart-product basket-img">
+                    <img src="<? echo $cart_category['product_img']; ?>" alt="Фото товара" class="img-cart-product basket-img">
 
                     <div class="main_text_basket">
-                        <a href="#" class="link-cart-basket">
-                            <p class="title-cart-basket category-list">Игровой ноутбук ASUS TUF Gaming F15 FX506HC-HN105</p>
+                        <a href="product-page.php?product=<? echo $cart_category['product_id']; ?>" class="link-cart-basket">
+                            <p class="title-cart-basket category-list"><? echo $cart_category['product_title']; ?></p>
                         </a>
 
                         <div class="specifications">
                             <div class="block-specifications">
-                                <p class="text-left">Тип устройства</p>
-                                <p class="text-right">Ноутбук</p>
+                                <p class="text-left">Производитель</p>
+                                <p class="text-right"><? echo $cart_category['brand_title']; ?></p>
                             </div>
+
                             <div class="block-specifications">
                                 <p class="text-left">Операционная система</p>
-                                <p class="text-right">Windows 11</p>
+                                <p class="text-right"><? echo $cart_category['operating_system']; ?></p>
                             </div>
                             <div class="block-specifications">
-                                <p class="text-left">Диагональ экрана</p>
-                                <p class="text-right">15.6"</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Разрешения экрана</p>
-                                <p class="text-right">1920x1080 Пикс</p>
+                                <p class="text-left">Частота обновления</p>
+                                <p class="text-right"><? echo $cart_category['maximum_refresh_rate']; ?> Гц</p>
                             </div>
                             <div class="block-specifications">
                                 <p class="text-left">Производитель процессора</p>
-                                <p class="text-right">Intel</p>
+                                <p class="text-right"><? echo $cart_category['processor_manufacturer']; ?></p>
                             </div>
                             <div class="block-specifications">
-                                <p class="text-left">Производитель видеокарты</p>
-                                <p class="text-right">Nvidia</p>
+                                <p class="text-left">Модель процессора</p>
+                                <p class="text-right"><? echo $cart_category['processor_model']; ?></p>
+                            </div>
+                            <div class="block-specifications">
+                                <p class="text-left">Вес</p>
+                                <p class="text-right"><? echo $cart_category['weight']; ?></p>
                             </div>
                         </div>
                     </div>
 
                     <div class="left-card-basket">
-                        <p class="cart-price-basket">84 899₽</p>
+                        <p class="cart-price-basket"><? echo number_format($cart_category['price'],'0', '.', ' '); ?> ₽</p>
                         <button class="buy-basket">Добавить в корзину</button>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="card-basket card-category">
-
-                <div class="cart-container">
-                    <img src="img/asus.png" alt="Фото товара" class="img-cart-product basket-img">
-
-                    <div class="main_text_basket">
-                        <a href="#" class="link-cart-basket">
-                            <p class="title-cart-basket category-list">Игровой ноутбук ASUS TUF Gaming F15 FX506HC-HN105</p>
-                        </a>
-
-                        <div class="specifications">
-                            <div class="block-specifications">
-                                <p class="text-left">Тип устройства</p>
-                                <p class="text-right">Ноутбук</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Операционная система</p>
-                                <p class="text-right">Windows 11</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Диагональ экрана</p>
-                                <p class="text-right">15.6"</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Разрешения экрана</p>
-                                <p class="text-right">1920x1080 Пикс</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель процессора</p>
-                                <p class="text-right">Intel</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель видеокарты</p>
-                                <p class="text-right">Nvidia</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="left-card-basket">
-                        <p class="cart-price-basket">84 899₽</p>
-                        <button class="buy-basket">Добавить в корзину</button>
-                    </div>
-                </div>
 
             </div>
+        <? endforeach; ?>
 
-            <div class="card-basket card-category">
-
-                <div class="cart-container">
-                    <img src="img/asus.png" alt="Фото товара" class="img-cart-product basket-img">
-
-                    <div class="main_text_basket">
-                        <a href="#" class="link-cart-basket">
-                            <p class="title-cart-basket category-list">Игровой ноутбук ASUS TUF Gaming F15 FX506HC-HN105</p>
-                        </a>
-
-                        <div class="specifications">
-                            <div class="block-specifications">
-                                <p class="text-left">Тип устройства</p>
-                                <p class="text-right">Ноутбук</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Операционная система</p>
-                                <p class="text-right">Windows 11</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Диагональ экрана</p>
-                                <p class="text-right">15.6"</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Разрешения экрана</p>
-                                <p class="text-right">1920x1080 Пикс</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель процессора</p>
-                                <p class="text-right">Intel</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель видеокарты</p>
-                                <p class="text-right">Nvidia</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="left-card-basket">
-                        <p class="cart-price-basket">84 899₽</p>
-                        <button class="buy-basket">Добавить в корзину</button>
-                    </div>
-                </div>
-
+            <div class="pagination">
+                <? for ($number_page = 1; $number_page <= $rezult7/5; $number_page++):?>
+                <a href="cards-category.php?category=<? echo $category_id; ?>&page=<? echo $number_page ?>" class="link-page-pagination"><? echo $number_page ?></a>
+                <? endfor ?>
             </div>
 
-            <div class="card-basket card-category">
-
-                <div class="cart-container">
-                    <img src="img/asus.png" alt="Фото товара" class="img-cart-product basket-img">
-
-                    <div class="main_text_basket">
-                        <a href="#" class="link-cart-basket">
-                            <p class="title-cart-basket category-list">Игровой ноутбук ASUS TUF Gaming F15 FX506HC-HN105</p>
-                        </a>
-
-                        <div class="specifications">
-                            <div class="block-specifications">
-                                <p class="text-left">Тип устройства</p>
-                                <p class="text-right">Ноутбук</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Операционная система</p>
-                                <p class="text-right">Windows 11</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Диагональ экрана</p>
-                                <p class="text-right">15.6"</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Разрешения экрана</p>
-                                <p class="text-right">1920x1080 Пикс</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель процессора</p>
-                                <p class="text-right">Intel</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель видеокарты</p>
-                                <p class="text-right">Nvidia</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="left-card-basket">
-                        <p class="cart-price-basket">84 899₽</p>
-                        <button class="buy-basket">Добавить в корзину</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card-basket card-category">
-
-                <div class="cart-container">
-                    <img src="img/asus.png" alt="Фото товара" class="img-cart-product basket-img">
-
-                    <div class="main_text_basket">
-                        <a href="#" class="link-cart-basket">
-                            <p class="title-cart-basket category-list">Игровой ноутбук ASUS TUF Gaming F15 FX506HC-HN105</p>
-                        </a>
-
-                        <div class="specifications">
-                            <div class="block-specifications">
-                                <p class="text-left">Тип устройства</p>
-                                <p class="text-right">Ноутбук</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Операционная система</p>
-                                <p class="text-right">Windows 11</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Диагональ экрана</p>
-                                <p class="text-right">15.6"</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Разрешения экрана</p>
-                                <p class="text-right">1920x1080 Пикс</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель процессора</p>
-                                <p class="text-right">Intel</p>
-                            </div>
-                            <div class="block-specifications">
-                                <p class="text-left">Производитель видеокарты</p>
-                                <p class="text-right">Nvidia</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="left-card-basket">
-                        <p class="cart-price-basket">84 899₽</p>
-                        <button class="buy-basket">Добавить в корзину</button>
-                    </div>
-                </div>
-
-            </div>
-        
         </div>
+
+
 
     </div>
 </div>

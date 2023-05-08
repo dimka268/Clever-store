@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/catalog.css">
     <link rel="stylesheet" href="css/cards-category.css">
     <link rel="stylesheet" href="css/order-history.css">
+    <link rel="stylesheet" href="css/product-page.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Clever store</title>
 </head>
@@ -55,19 +56,19 @@
                         <img src="img/basket.svg" alt="" class="img-cart">
                         Корзина</a>
                     </div>
-                    <? if(!array_key_exists('user_id', $_SESSION)):?>
+                    <? if(key_exists("user_id", $_SESSION)): ?>
                         <div class="cart-navigation">
-                            <a href="log_in.php" class="text-navigation last js-class">
+                            <a class="text-navigation last js-class" href="log-out.php">
                                 <img src="img/exit.svg" alt="" class="img-cart">
                                 Выйти</a>
                         </div>
-                    <?else:?>
+                    <? else: ?>
                         <div class="cart-navigation">
-                            <a href="log_in.php" class="text-navigation last">
+                            <a class="text-navigation last js-class" id="bth-aut">
                                 <img src="img/sign_in.svg" alt="" class="img-cart">
                                 Войти</a>
                         </div>
-                    <?endif?>
+                    <? endif ?>
 
                 </div>
             </div>
@@ -75,3 +76,44 @@
         </div>
 
     </header>
+
+    <div class="main2 hidden" id="log-in">
+        <form action="connection-log_in.php" method="post" class="modal-window ">
+            <div class="container-modal">
+                <button type="button" class="link-log-in" id="exit">
+                    <img src="img/Arrow-exit.svg" alt="Назад" class="arrow">
+                </button>
+                <img src="img/Clever_store_logo.svg" alt="Логотип магазина" class="logo-modal">
+                <h3 class="title-modal">Вход</h3>
+                <div class="inputs-form">
+                    <input type="email" id="email" name="email" class="form-modal" placeholder="Логин" autocomplete="off">
+                    <input type="password" id="password" name="password1" class="form-modal" placeholder="Пароль" autocomplete="off">
+                </div>
+                <div class="buttons-form">
+                    <button type="submit" class="button-modal">Войти</button>
+                    <p class="text-between-button">Если вы не зарегистрированы то</p>
+                        <button type="button" class="button-modal" id="go_register">Зарегистрироваться</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="main2 hidden" id="register">
+        <form action="connection-register.php" method="post" class="modal-window">
+            <div class="container-modal">
+                <button type="button" class="link-log-in" id="exit2">
+                    <img src="img/Arrow-exit.svg" alt="Назад" class="arrow" >
+                </button>
+                <img src="img/Clever_store_logo.svg" alt="Логотип магазина" class="logo-modal">
+                <h3 class="title-modal">Регистрация</h3>
+                <div class="inputs-form">
+                    <input type="text" maxlength="50" id="name" name="name" class="form-modal" placeholder="Введите свое имя" autocomplete="off">
+                    <input type="email" maxlength="320" id="email" name="email" class="form-modal" placeholder="Введите свою почту (логин)" autocomplete="off">
+                    <input type="password" minlength="4" id="password1" name="password1" maxlength="16" class="form-modal" placeholder="Придумайте пароль (от 4 до 16 символов)" autocomplete="off">
+                    <input type="password" minlength="4" id="password2" name="password2" maxlength="16" class="form-modal" placeholder="Повторите пароль" autocomplete="off">
+                </div>
+                <div class="buttons-form regist">
+                    <button type="submit" class="button-modal">Зарегистрироваться</button>
+                </div>
+            </div>
+        </form>
+    </div>

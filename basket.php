@@ -19,11 +19,13 @@ $rezult_basket = $connect->query($basket_output)->fetch_all(MYSQLI_ASSOC);
                 <div class="cart-container">
                     <img src="img/asus.png" alt="Фото товара" class="img-cart-product basket-img">
                     <div class="cart-caregory basket-category">
-                        <a href="#" class="category">Ноутбуки</a>
+                        <!-- TODO:-->
+                        <a href="cards-category.php" class="category">Ноутбуки</a>
                     </div>
 
                     <div class="main_text_basket">
-                        <a href="#" class="link-cart-basket">
+                        <!-- TODO:-->
+                        <a href="product-page.php" class="link-cart-basket">
                             <p class="title-cart-basket">Игровой ноутбук ASUS TUF Gaming F15 FX506HC-HN105</p>
                         </a>
 
@@ -136,5 +138,5 @@ $rezult_basket = $connect->query($basket_output)->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 </div>
-
+<script src="js/mail.js"></script>
 <? require_once "footer.php"; ?>

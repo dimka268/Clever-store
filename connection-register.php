@@ -15,4 +15,4 @@ if(!empty($user1)){
 $connect->query("INSERT INTO `users`(`name`, `email`, `password`) VALUES ('$name','$email','$password1')");
 $connect->close();
 
-header('Location: register.php');
+header('Location: index.php');
