@@ -58,13 +58,13 @@
                     </div>
                     <? if(key_exists("user_id", $_SESSION)): ?>
                         <div class="cart-navigation">
-                            <a class="text-navigation last js-class" href="log-out.php">
+                            <a class="text-navigation last" href="log-out.php">
                                 <img src="img/exit.svg" alt="" class="img-cart">
                                 Выйти</a>
                         </div>
                     <? else: ?>
                         <div class="cart-navigation">
-                            <a class="text-navigation last js-class" id="bth-aut">
+                            <a class="text-navigation last" id="bth-aut">
                                 <img src="img/sign_in.svg" alt="" class="img-cart">
                                 Войти</a>
                         </div>
@@ -98,7 +98,7 @@
         </form>
     </div>
     <div class="main2 hidden" id="register">
-        <form action="connection-register.php" method="post" class="modal-window">
+        <form action="connection-register.php" method="post" class="modal-window form-registr" id="form-registr" >
             <div class="container-modal">
                 <button type="button" class="link-log-in" id="exit2">
                     <img src="img/Arrow-exit.svg" alt="Назад" class="arrow" >
@@ -108,6 +108,7 @@
                 <div class="inputs-form">
                     <input type="text" maxlength="50" id="name" name="name" class="form-modal" placeholder="Введите свое имя" autocomplete="off">
                     <input type="email" maxlength="320" id="email" name="email" class="form-modal" placeholder="Введите свою почту (логин)" autocomplete="off">
+                    <p class="error-valid hidden"></p>
                     <input type="password" minlength="4" id="password1" name="password1" maxlength="16" class="form-modal" placeholder="Придумайте пароль (от 4 до 16 символов)" autocomplete="off">
                     <input type="password" minlength="4" id="password2" name="password2" maxlength="16" class="form-modal" placeholder="Повторите пароль" autocomplete="off">
                 </div>

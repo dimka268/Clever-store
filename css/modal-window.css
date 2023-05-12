@@ -27,14 +27,13 @@
     bottom: 40px;
     margin: auto;
     width: 350px;
-    height: 400px;
+    padding-bottom: 30px;
     background: #D9D9D9;
     border-radius: 10px;
 }
 
 .container-modal{
     width: 250px;
-    height: 335px;
     margin: auto;
     margin-top: 35px;
 }
@@ -107,4 +106,14 @@
     font-size: 12px;
     line-height: 14px;
     color: #626262;
+}
+
+.error-valid{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #626262;
+    margin-bottom: -5px;
+    margin-top: 5px;
+    text-align: center;
 }

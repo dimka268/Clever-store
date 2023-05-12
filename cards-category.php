@@ -1,4 +1,6 @@
+<? require_once "header.php"; ?>
 <?php
+$user_id = $_SESSION['user_id'];
 $category_id = $_GET["category"];
 $page = $_GET["page"]?:1;
 $offset = $page * 5 - 5;
@@ -7,12 +9,23 @@ $connect = new mysqli('localhost', 'root', '', 'clever_store');
 
 $card_output2 = "SELECT * FROM `categories` WHERE category_id = $category_id";
 
-$card_output3 = "SELECT `product_id`, categories.category_title AS categories_category_title,  brands.`title` AS brand_title, products.`title` AS product_title, `operating_system`,`maximum_refresh_rate`,`processor_manufacturer`,`processor_model`,`weight`,`price`,`description`, products.`img` AS product_img
-FROM `products` 
-INNER JOIN brands ON brands.brand_id = products.brand_id
-INNER JOIN categories ON categories.category_id = products.category_id
-WHERE products.category_id = $category_id LIMIT $offset, 5;";
-
+if (is_null($user_id)){
+        $card_output3 = "SELECT `product_id`, categories.category_title AS categories_category_title,  brands.`title` AS brand_title, products.`title` AS product_title, `operating_system`,`maximum_refresh_rate`,`processor_manufacturer`,`processor_model`,`weight`,`price`,`description`, products.`img` AS product_img
+    FROM `products` 
+    INNER JOIN brands ON brands.brand_id = products.brand_id
+    INNER JOIN categories ON categories.category_id = products.category_id
+    WHERE products.category_id = $category_id LIMIT $offset, 5;";
+}else{
+        $card_output3 = "SELECT `product_id`, categories.category_title AS categories_category_title,  brands.`title` AS brand_title, products.`title` AS product_title, `operating_system`,`maximum_refresh_rate`,`processor_manufacturer`,`processor_model`,`weight`,`price`,`description`, products.`img` AS product_img,
+    (SELECT `orderproducts_id`
+    FROM `order_products`
+    INNER JOIN orders ON orders.order_id = order_products.order_id
+    WHERE `product_id`= products.product_id AND orders.user_id = $user_id) AS orderproducts_id
+    FROM `products`
+    INNER JOIN brands ON brands.brand_id = products.brand_id
+    INNER JOIN categories ON categories.category_id = products.category_id
+    WHERE products.category_id = $category_id  LIMIT $offset, 5;";
+}
 $card_count1 = "SELECT COUNT(*) AS count
 FROM `products` 
 WHERE products.category_id = $category_id;";
@@ -23,7 +36,7 @@ $rezult5 = $connect->query($card_output2)->fetch_all(MYSQLI_ASSOC);
 
 $rezult6 = $connect->query($card_output3)->fetch_all(MYSQLI_ASSOC);
 ?>
-<? require_once "header.php"; ?>
+
 <? require_once "header-bottom.php"; ?>
 
 <div class="container-catalog">
@@ -135,7 +148,21 @@ $rezult6 = $connect->query($card_output3)->fetch_all(MYSQLI_ASSOC);
 
                     <div class="left-card-basket">
                         <p class="cart-price-basket"><? echo number_format($cart_category['price'],'0', '.', ' '); ?> ₽</p>
-                        <button class="buy-basket">Добавить в корзину</button>
+                        <?if (is_null($user_id)):?>
+                            <button class="buy-basket">Добавить в корзину</button>
+                        <? else: ?>
+                            <? if (is_null($cart_category['orderproducts_id'])):?>
+                                <form action="adding-cart-basket.php" method="post" class="form-basket">
+                                    <input type="hidden" value="<? echo $cart_category['product_id']; ?>" name="product-id">
+                                    <button class="buy-basket">Добавить в корзину</button>
+                                </form>
+                            <? else: ?>
+                                <form action="delete-cart.php" method="post" class="delete-cart">
+                                    <input type="hidden" value="<? echo $cart_category['orderproducts_id']; ?>" name="product-id-delete">
+                                    <button class="buy-basket">Удалить из корзины</button>
+                                </form>
+                            <? endif; ?>
+                        <? endif; ?>
                     </div>
                 </div>
 

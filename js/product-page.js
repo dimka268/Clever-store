@@ -1,5 +1,5 @@
-var specification = document.getElementById('specification')
-var description = document.getElementById('description')
+var specification = document.getElementById('specification');
+var description = document.getElementById('description');
 
 document.getElementById('d-header').addEventListener('click', function (){
     specification.classList.add("hidden");

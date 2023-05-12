@@ -1,8 +1,9 @@
 <? require_once "header.php"; ?>
 <? require_once "header-bottom.php"; ?>
-<?  $connect = new mysqli('localhost', 'root', '', 'clever_store');
+<?
+$connect = new mysqli('localhost', 'root', '', 'clever_store');
 
-    $card_output = "SELECT `product_id`,categories.`category_title`, `brand_id`, `title`,`price`,`description`, products.`img` AS product_img
+    $card_output = "SELECT `product_id`, categories.category_id, categories.`category_title`, `brand_id`, `title`,`price`,`description`, products.`img` AS product_img
                FROM `products`
                INNER JOIN categories ON categories.category_id = products.category_id";
     $brand_output = "SELECT `img` FROM `brands` LIMIT 0, 12";
@@ -32,11 +33,9 @@
                                 <div class="container-cart">
                                     <img src="<? echo $cart['product_img']; ?>" alt="Фото компьютера" class="img-cart-product rec">
                                     <div class="cart-caregory">
-                                        <!-- TODO:-->
-                                        <a href="cards-category.php" class="category"><? echo $cart['category_title']; ?></a>
+                                        <a href="cards-category.php?category=<? echo $cart['category_id']; ?>" class="category"><? echo $cart['category_title']; ?></a>
                                     </div>
-                                    <!-- TODO:-->
-                                    <a href="product-page.php?" class="link-cart-product">
+                                    <a href="product-page.php?product=<? echo $cart['product_id']; ?>" class="link-cart-product">
                                         <p class="cart-title-rec"><? echo $cart['title']; ?></p>
                                     </a>
                                     <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>
@@ -55,46 +54,50 @@
 
                 <? foreach ($rezult2 as $category): ?>
 
-                    <a href="#" class="links-brand">
                         <div class="cart-brand">
                             <img src="<? echo $category['img']; ?>" alt="Логотип бренда" class="img-cart-brand">
                         </div>
-                    </a>
+
                     <? endforeach ?>
             </div>
         </div>
 
-        <? if(array_key_exists('user_id', $_SESSION)):?>
+        <? if(array_key_exists('user_id', $_SESSION)): ?>
             <div class="recommendations">
                 <h3 class="title-main">Вы недавно смотрели</h3>
-                <div class="carts-product-recommendations">
-                    <? $count = 1;
-                    foreach ($rezult as $cart):
-                        if ($count > 4) break ?>
-                        <!-- TODO:-->
-                        <a href="product-page.php" class="cart-links-rec">
-                            <div class="cart-product-rec">
-                                <div class="container-cart">
-                                    <img src="<? echo $cart['product_img']; ?>" alt="Фото компьютера" class="img-cart-product rec">
-                                    <div class="cart-caregory">
-                                        <!-- TODO:-->
-                                        <a href="cards-category.php" class="category"><? echo $cart['category_title']; ?></a>
+                <? if (key_exists('products', $_SESSION)): ?>
+                    <div class="carts-product-recommendations">
+                        <? $products_mass = array_slice(array_unique($_SESSION['products'], SORT_REGULAR), -4, 4, true);
+                        foreach ($products_mass as $id):
+                            $card_output20 = "SELECT `product_id`, categories.category_id, categories.`category_title`, `brand_id`, `title`,`price`,`description`, products.`img` AS product_img
+                            FROM `products`
+                            INNER JOIN categories ON categories.category_id = products.category_id
+                            where product_id = $id";
+                            $cart = $connect->query($card_output20)->fetch_assoc();
+                            ?>
+                            <!-- TODO:-->
+                            <a href="product-page.php" class="cart-links-rec">
+                                <div class="cart-product-rec">
+                                    <div class="container-cart">
+                                        <img src="<? echo $cart['product_img']; ?>" alt="Фото компьютера" class="img-cart-product rec">
+                                        <div class="cart-caregory">
+                                            <a href="cards-category.php?category=<? echo $cart['category_id']; ?>" class="category"><? echo $cart['category_title']; ?></a>
+                                        </div>
+                                        <a href="product-page.php?product=<? echo $cart['product_id']; ?>" class="link-cart-product">
+                                            <p class="cart-title-rec"><? echo $cart['title']; ?></p>
+                                        </a>
+                                        <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>
+                                        <button class="buy-rec">В корзину</button>
                                     </div>
-                                    <!-- TODO:-->
-                                    <a href="product-page.php" class="link-cart-product">
-                                        <p class="cart-title-rec"><? echo $cart['title']; ?></p>
-                                    </a>
-                                    <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>
-                                    <button class="buy-rec">В корзину</button>
                                 </div>
-                            </div>
-                        </a>
-                        <? $count++;
-                    endforeach?>
-                </div>
+                            </a>
+                            <? endforeach ?>
+                    </div>
+                <? else: ?>
+                <p class="text-null-recent">Вы не просматривали товары нашего магазина, поэтому здесь пусто</p>
+                <? endif; ?>
             </div>
-        <?endif?>
+        <? endif; ?>
     </div>
-
 </div>
 <? require_once "footer.php"; ?>
