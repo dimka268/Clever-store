@@ -11,6 +11,7 @@ $connect = new mysqli('localhost', 'root', '', 'clever_store');
     $rezult2 = $connect->query($brand_output)->fetch_all(MYSQLI_ASSOC);
     ?>
 <div class="main">
+    <div class="container-main">
         <div class="stocks">
             <h3 class="title-main">Новые акции</h3>
             <div class="container-slider">
@@ -19,6 +20,7 @@ $connect = new mysqli('localhost', 'root', '', 'clever_store');
                 </div>
             </div>
         </div>
+    </div>
 
     <div class="container-main">
         <div class="recommendations">
@@ -39,6 +41,7 @@ $connect = new mysqli('localhost', 'root', '', 'clever_store');
                                         <p class="cart-title-rec"><? echo $cart['title']; ?></p>
                                     </a>
                                     <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>
+                                    <!-- TODO:-->
                                     <button class="buy-rec">В корзину</button>
                                 </div>
                             </div>
@@ -87,6 +90,7 @@ $connect = new mysqli('localhost', 'root', '', 'clever_store');
                                             <p class="cart-title-rec"><? echo $cart['title']; ?></p>
                                         </a>
                                         <p class="cart-price-rec"><? echo number_format($cart['price'],'0', '.', ' '); ?> ₽</p>
+                                        <!-- TODO:-->
                                         <button class="buy-rec">В корзину</button>
                                     </div>
                                 </div>
